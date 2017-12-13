@@ -1,5 +1,7 @@
 package com.dearlhd.crhwifi.SDK.network;
 
+import com.dearlhd.crhwifi.SDK.bean.Account;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -40,7 +42,7 @@ public class CRHWifiApi {
         }
     }
 
-    public CRHWifiApi getInstance() {
+    public static CRHWifiApi getInstance() {
         if (mCRHWifiApi == null) {
             // 保证单例
             synchronized (CRHWifiApi.class) {
@@ -58,11 +60,11 @@ public class CRHWifiApi {
      *
      * @param subscriber 监听者对象
      */
-//    public void login(Subscriber<Integer> subscriber, Account account) {
-//        mService.login(account)
-//                .subscribeOn(Schedulers.io())
-//                .unsubscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe(subscriber);
-//    }
+    public void login(Subscriber<Integer> subscriber, Account account) {
+        mService.login(account)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
 }

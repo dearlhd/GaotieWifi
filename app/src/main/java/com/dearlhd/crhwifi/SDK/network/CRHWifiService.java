@@ -1,5 +1,7 @@
 package com.dearlhd.crhwifi.SDK.network;
 
+import com.dearlhd.crhwifi.SDK.bean.Account;
+
 import retrofit2.http.Body;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
@@ -13,7 +15,7 @@ public interface CRHWifiService {
     /**
      * 登录
      */
-//    @Headers({"Content-type:application/json"})
-//    @POST("CarPlatform/account/login")
-//    Observable<Authorization> login(@Body Account account);
+    @Headers({"Content-type:application/json"})
+    @POST("CRHWifi/account/login")
+    Observable<Integer> login(@Body Account account);
 }
