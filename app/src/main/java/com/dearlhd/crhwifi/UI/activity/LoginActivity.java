@@ -80,6 +80,11 @@ public class LoginActivity extends Activity {
             }
         };
 
+        // 测试用
+        Intent intent = new Intent(LoginActivity.this, HomePageActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+
         Account account = new Account();
         account.setUsername(username);
         account.setPassword(password);

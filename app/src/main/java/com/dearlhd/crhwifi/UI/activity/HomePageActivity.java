@@ -9,6 +9,8 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dearlhd.crhwifi.R;
@@ -21,23 +23,22 @@ public class HomePageActivity extends FragmentActivity {
 
     private ConnectFragment mConnectFragment;
 
-    private ImageView mIvTab0;
-    private ImageView mIvTab1;
-    private ImageView mIvTab2;
-    private ImageView mIvTab3;
+    private LinearLayout mLlTab0;
+    private LinearLayout mLlTab1;
+    private LinearLayout mLlTab2;
+    private LinearLayout mLlTab3;
 
-    private OnBackListener mOnBackListener;
-
-    public interface OnBackListener {
-        boolean onBackPressed();
-    }
+    private TextView mTvTab0;
+    private TextView mTvTab1;
+    private TextView mTvTab2;
+    private TextView mTvTab3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         initView();
-        mIvTab0.performClick();
+        mLlTab0.performClick();
     }
 
     /* ---------------------- 下面是针对按下返回键的逻辑 ------------------------*/
@@ -54,12 +55,6 @@ public class HomePageActivity extends FragmentActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            if (mOnBackListener != null) {
-                if (mOnBackListener.onBackPressed()) {
-                    return true;
-                }
-            }
-
             if (!isExit) {
                 isExit = true;
                 Toast.makeText(HomePageActivity.this, "再按一次退出程序",
@@ -74,49 +69,50 @@ public class HomePageActivity extends FragmentActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-    public void setOnBackListener(OnBackListener listener) {
-        mOnBackListener = listener;
-    }
-
     private void initView() {
-        mIvTab0 = (ImageView) findViewById(R.id.iv_tab0);
-        mIvTab1 = (ImageView) findViewById(R.id.iv_tab1);
-        mIvTab2 = (ImageView) findViewById(R.id.iv_tab2);
-        mIvTab3 = (ImageView) findViewById(R.id.iv_tab3);
+        mLlTab0 = (LinearLayout) findViewById(R.id.ll_tab0);
+        mLlTab1 = (LinearLayout) findViewById(R.id.ll_tab1);
+        mLlTab2 = (LinearLayout) findViewById(R.id.ll_tab2);
+        mLlTab3 = (LinearLayout) findViewById(R.id.ll_tab3);
 
-        mIvTab0.setOnClickListener(new View.OnClickListener() {
+        mTvTab0 = (TextView) findViewById(R.id.tv_tab0);
+        mTvTab1 = (TextView) findViewById(R.id.tv_tab1);
+        mTvTab2 = (TextView) findViewById(R.id.tv_tab2);
+        mTvTab3 = (TextView) findViewById(R.id.tv_tab3);
+
+        mLlTab0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                initTabIcon();
-                //mIvTab0.setImageResource(R.drawable.icon_platform_selected);
+                initTab();
+                mTvTab0.setTextColor(getResources().getColor(R.color.colorRedText));
                 changeFragment(0);
             }
         });
 
-        mIvTab1.setOnClickListener(new View.OnClickListener() {
+        mLlTab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                initTabIcon();
-                //mIvTab1.setImageResource(R.drawable.icon_platform_selected);
-                changeFragment(0);
+                initTab();
+                mTvTab1.setTextColor(getResources().getColor(R.color.colorRedText));
+                changeFragment(1);
             }
         });
 
-        mIvTab2.setOnClickListener(new View.OnClickListener() {
+        mLlTab2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                initTabIcon();
-                //mIvTab2.setImageResource(R.drawable.icon_platform_selected);
-                changeFragment(0);
+                initTab();
+                mTvTab2.setTextColor(getResources().getColor(R.color.colorRedText));
+                changeFragment(2);
             }
         });
 
-        mIvTab3.setOnClickListener(new View.OnClickListener() {
+        mLlTab3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                initTabIcon();
-                //mIvTab3.setImageResource(R.drawable.icon_platform_selected);
-                changeFragment(0);
+                initTab();
+                mTvTab3.setTextColor(getResources().getColor(R.color.colorRedText));
+                changeFragment(3);
             }
         });
     }
@@ -129,10 +125,6 @@ public class HomePageActivity extends FragmentActivity {
 
         switch (index) {
             case 0:
-                break;
-            case 1:
-                break;
-            case 2:
                 if (mConnectFragment == null) {
                     mConnectFragment = new ConnectFragment();
                     fragmentTransaction.add(R.id.fl_content, mConnectFragment);
@@ -140,8 +132,11 @@ public class HomePageActivity extends FragmentActivity {
                     fragmentTransaction.show(mConnectFragment);
                 }
                 break;
+            case 1:
+                break;
+            case 2:
+                break;
             case 3:
-
                 break;
         }
 
@@ -155,11 +150,11 @@ public class HomePageActivity extends FragmentActivity {
 
     }
 
-    private void initTabIcon () {
-//        mIvTab0.setImageResource(R.drawable.icon_data_unselected);
-//        mIvTab1.setImageResource(R.drawable.icon_statement_unselected);
-//        mIvTab2.setImageResource(R.drawable.icon_platform_unselected);
-//        mIvTab3.setImageResource(R.drawable.icon_setting_unselected);
+    private void initTab () {
+        mTvTab0.setTextColor(getResources().getColor(R.color.colorBlackText));
+        mTvTab1.setTextColor(getResources().getColor(R.color.colorBlackText));
+        mTvTab2.setTextColor(getResources().getColor(R.color.colorBlackText));
+        mTvTab3.setTextColor(getResources().getColor(R.color.colorBlackText));
     }
 
 }
