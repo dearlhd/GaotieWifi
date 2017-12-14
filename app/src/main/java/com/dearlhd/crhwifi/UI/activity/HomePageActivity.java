@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.dearlhd.crhwifi.R;
 import com.dearlhd.crhwifi.UI.fragment.ConnectFragment;
+import com.dearlhd.crhwifi.UI.fragment.NewsFragment;
 
 /**
  * Created by dearlhd on 2016/12/16.
@@ -22,6 +23,7 @@ import com.dearlhd.crhwifi.UI.fragment.ConnectFragment;
 public class HomePageActivity extends FragmentActivity {
 
     private ConnectFragment mConnectFragment;
+    private NewsFragment mNewsFragment;
 
     private LinearLayout mLlTab0;
     private LinearLayout mLlTab1;
@@ -133,6 +135,12 @@ public class HomePageActivity extends FragmentActivity {
                 }
                 break;
             case 1:
+                if (mNewsFragment == null) {
+                    mNewsFragment = new NewsFragment();
+                    fragmentTransaction.add(R.id.fl_content, mNewsFragment);
+                } else {
+                    fragmentTransaction.show(mNewsFragment);
+                }
                 break;
             case 2:
                 break;
@@ -146,6 +154,10 @@ public class HomePageActivity extends FragmentActivity {
     private void hideFragments(FragmentTransaction fragmentTransaction) {
         if (mConnectFragment != null) {
             fragmentTransaction.hide(mConnectFragment);
+        }
+
+        if (mNewsFragment != null) {
+            fragmentTransaction.hide(mNewsFragment);
         }
 
     }
