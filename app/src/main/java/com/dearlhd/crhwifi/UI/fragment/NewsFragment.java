@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dearlhd.crhwifi.R;
+import com.dearlhd.crhwifi.UI.adapter.NewsAdapter;
+import com.dearlhd.crhwifi.UI.view.PullToRefreshListView;
 
 /**
  * Created by dearlhd on 2017/12/13.
@@ -15,6 +17,8 @@ public class NewsFragment extends Fragment {
 
     private View mRoot;
 
+    private PullToRefreshListView mNewsListView;
+    private NewsAdapter mNewsAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -32,6 +36,7 @@ public class NewsFragment extends Fragment {
     }
 
     private void initView () {
+        mNewsListView = (PullToRefreshListView) mRoot.findViewById(R.id.lv_news);
 
     }
 }

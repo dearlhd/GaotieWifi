@@ -8,51 +8,52 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/colorRed"
-        >
+        android:background="@color/colorRed">
 
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="10dp"
             android:layout_centerVertical="true"
-            android:src="@drawable/ic_wifi_white"
-            />
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/ic_wifi_white" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="资讯"
-            android:textSize="20sp"
             android:textColor="@color/colorWhite"
-            />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tv_choujiang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:layout_marginRight="8dp"
             android:text="抽"
-            android:textSize="20sp"
             android:textColor="@color/colorWhite"
-            />
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@id/tv_choujiang"
             android:layout_marginRight="3dp"
+            android:layout_toLeftOf="@id/tv_choujiang"
             android:text="签"
-            android:textSize="20sp"
             android:textColor="@color/colorWhite"
-            />
+            android:textSize="20sp" />
 
     </RelativeLayout>
 
-
+    <com.dearlhd.crhwifi.UI.view.PullToRefreshListView
+        android:id="@+id/lv_news"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:divider="@color/colorLightGreyLine"
+        android:dividerHeight="1dp" />
 
 </LinearLayout>
