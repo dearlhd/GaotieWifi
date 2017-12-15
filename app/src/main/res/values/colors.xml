@@ -11,6 +11,7 @@
     <color name="colorDarkGreyLine">#a3a3a3</color>
     <color name="colorLightGreyLine">#E7E7E7</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorYellow">#f7ec11</color>
     <color name="colorLightGreyBg">#fffbfb</color>
     <color name="colorRed">#d10000</color>
     <color name="colorPink">#F6E7EA</color>
