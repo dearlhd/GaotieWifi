@@ -90,7 +90,9 @@ public class ConnectFragment extends Fragment {
                     public void onOptionPicked(int index, String item) {
                         if (index != 0) {
                             mJourney.setDestination(item);
+                            mJourney.setArrivalTime("18:38");
                             mTvDestination.setText(item);
+                            mTvArrivalTime.setText("18:38");
                             SQLiteHelper helper = new SQLiteHelper();
                             helper.setJourney(mJourney);
                         }

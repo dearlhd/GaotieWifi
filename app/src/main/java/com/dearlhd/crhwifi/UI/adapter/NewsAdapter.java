@@ -1,6 +1,9 @@
 package com.dearlhd.crhwifi.UI.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +54,7 @@ public class NewsAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.item_news, null);
             holder = new ViewHolder();
             holder.tvTitle = (TextView) convertView.findViewById(R.id.tv_news_title);
-            holder.tvContent = (TextView) convertView.findViewById(R.id.tv_news_info);
+            holder.tvSource = (TextView) convertView.findViewById(R.id.tv_news_info);
             holder.ivImage = (ImageView) convertView.findViewById(R.id.iv_news_image);
             convertView.setTag(holder);
 
@@ -61,14 +64,20 @@ public class NewsAdapter extends BaseAdapter {
 
         News news = mNewsList.get(position);
         holder.tvTitle.setText(news.getTitle());
-        holder.tvContent.setText(news.getContent());
+        holder.tvSource.setText(news.getSource());
+        byte[] bitmapArray = decodeBase64(news.getImage());
+        holder.ivImage.setImageBitmap(BitmapFactory.decodeByteArray(bitmapArray, 0, bitmapArray.length));
 
         return convertView;
     }
 
+    private byte[] decodeBase64 (String base) {
+        return Base64.decode(base.getBytes(), Base64.DEFAULT);
+    }
+
     class ViewHolder {
         TextView tvTitle;
-        TextView tvContent;
+        TextView tvSource;
         ImageView ivImage;
     }
 }

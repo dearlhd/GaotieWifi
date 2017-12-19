@@ -1,12 +1,36 @@
 package com.dearlhd.crhwifi.SDK.bean;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by dearlhd on 2017/12/15.
  */
 public class News {
+    @SerializedName("id")
+    private long id;
+
+    @SerializedName("title")
     private String title;
+
+    @SerializedName("content")
     private String content;
-    private int image;
+
+    @SerializedName("img_path")
+    private String image;
+
+    @SerializedName("source")
+    private String source;
+
+    @SerializedName("publish_time")
+    private String time;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getTitle() {
         return title;
@@ -24,11 +48,27 @@ public class News {
         this.content = content;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 }

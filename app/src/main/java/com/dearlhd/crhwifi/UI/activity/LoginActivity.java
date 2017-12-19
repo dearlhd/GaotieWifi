@@ -1,10 +1,8 @@
 package com.dearlhd.crhwifi.UI.activity;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +11,7 @@ import android.widget.Toast;
 import com.dearlhd.crhwifi.R;
 import com.dearlhd.crhwifi.SDK.bean.Account;
 import com.dearlhd.crhwifi.SDK.network.CRHWifiApi;
+import com.dearlhd.crhwifi.SDK.response.LoginResponse;
 
 import rx.Subscriber;
 
@@ -20,7 +19,7 @@ public class LoginActivity extends Activity {
     private EditText mEtAccount;
     private EditText mEtPassword;
     private Button mBtnLogin;
-    private Subscriber<Integer> mSubscriber;
+    private Subscriber<LoginResponse> mSubscriber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +43,7 @@ public class LoginActivity extends Activity {
     private void login() {
         String username = mEtAccount.getText().toString();
         String password = mEtPassword.getText().toString();
-        mSubscriber = new Subscriber<Integer>() {
+        mSubscriber = new Subscriber<LoginResponse>() {
             @Override
             public void onCompleted() {
             }
@@ -56,7 +55,7 @@ public class LoginActivity extends Activity {
             }
 
             @Override
-            public void onNext(Integer i) {
+            public void onNext(LoginResponse response) {
 //                if (auth.authorization == null) {
 //                    Toast.makeText(LoginActivity.this, "用户名或密码错误，请重新输入", Toast.LENGTH_SHORT).show();
 //                } else {

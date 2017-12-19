@@ -7,8 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dearlhd.crhwifi.R;
+import com.dearlhd.crhwifi.SDK.bean.News;
+import com.dearlhd.crhwifi.SDK.network.CRHWifiApi;
+import com.dearlhd.crhwifi.SDK.response.NewsResponse;
 import com.dearlhd.crhwifi.UI.adapter.NewsAdapter;
 import com.dearlhd.crhwifi.UI.view.PullToRefreshListView;
+
+import java.util.List;
+
+import rx.Subscriber;
 
 /**
  * Created by dearlhd on 2017/12/13.
@@ -16,6 +23,8 @@ import com.dearlhd.crhwifi.UI.view.PullToRefreshListView;
 public class NewsFragment extends Fragment {
 
     private View mRoot;
+
+    private Subscriber<NewsResponse> mSubscriber;
 
     private PullToRefreshListView mNewsListView;
     private NewsAdapter mNewsAdapter;
@@ -38,5 +47,25 @@ public class NewsFragment extends Fragment {
     private void initView () {
         mNewsListView = (PullToRefreshListView) mRoot.findViewById(R.id.lv_news);
 
+        mSubscriber = new Subscriber<NewsResponse>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onNext(NewsResponse newsResponse) {
+                List<News> newsList = newsResponse.newses;
+                NewsAdapter adapter = new NewsAdapter(getContext(), newsList);
+                mNewsListView.setAdapter(adapter);
+            }
+        };
+
+        CRHWifiApi.getInstance().getNewsList(mSubscriber);
     }
 }

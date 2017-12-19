@@ -1,6 +1,12 @@
 package com.dearlhd.crhwifi.SDK.network;
 
 import com.dearlhd.crhwifi.SDK.bean.Account;
+import com.dearlhd.crhwifi.SDK.bean.History;
+import com.dearlhd.crhwifi.SDK.response.AddHistoryResponse;
+import com.dearlhd.crhwifi.SDK.response.HistoryResponse;
+import com.dearlhd.crhwifi.SDK.response.NewsResponse;
+import com.dearlhd.crhwifi.SDK.response.LoginResponse;
+import com.dearlhd.crhwifi.SDK.response.UserResponse;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -16,7 +22,7 @@ import rx.schedulers.Schedulers;
  */
 public class CRHWifiApi {
 
-    public static final String BASEURL = "http://115.159.78.97:8080/";
+    public static final String BASEURL = "http://202.120.40.111:25000/";
 
     private static volatile CRHWifiApi mCRHWifiApi;
 
@@ -60,8 +66,56 @@ public class CRHWifiApi {
      *
      * @param subscriber 监听者对象
      */
-    public void login(Subscriber<Integer> subscriber, Account account) {
+    public void login(Subscriber<LoginResponse> subscriber, Account account) {
         mService.login(account)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    /**
+     * 获取用户信息
+     * @param subscriber
+     * @param userId
+     */
+    public void getUserInfo(Subscriber<UserResponse> subscriber, long userId) {
+        mService.getUserInfo(userId)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    /**
+     * 获得新闻列表
+     */
+    public void getNewsList (Subscriber<NewsResponse> subscriber) {
+        mService.getNewsList()
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    /**
+     * 添加访问记录
+     */
+    public void addHistory (Subscriber<AddHistoryResponse> subscriber, History history) {
+        mService.addHistory(history)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    /**
+     * 获得访问历史
+     * @param subscriber
+     * @param userId
+     */
+    public void getHistories (Subscriber<HistoryResponse> subscriber, long userId) {
+        mService.getHistories(userId)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
