@@ -69,6 +69,7 @@
             />
 
         <LinearLayout
+            android:id="@+id/ll_set_destination"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -84,6 +85,7 @@
                 />
 
             <TextView
+                android:id="@+id/tv_destination"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="上海"
@@ -109,6 +111,7 @@
                 />
 
             <TextView
+                android:id="@+id/tv_current_station"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="苏州"
@@ -135,6 +138,7 @@
                 />
 
             <TextView
+                android:id="@+id/tv_arrival_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="18:36"

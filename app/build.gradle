@@ -38,4 +38,6 @@ dependencies {
     compile 'com.squareup.okio:okio:1.10.0'
 
 
+    // 滚动选择器
+    compile 'cn.qqtheme.framework:WheelPicker:1.4.1'
 }

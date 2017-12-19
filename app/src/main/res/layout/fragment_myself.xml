@@ -168,7 +168,7 @@
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:layout_marginLeft="12dp"
-                android:src="@drawable/ic_weather"/>
+                android:src="@drawable/ic_cloud"/>
 
             <TextView
                 android:layout_toRightOf="@id/iv_ic3"
@@ -206,7 +206,7 @@
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:layout_marginLeft="12dp"
-                android:src="@drawable/ic_public"/>
+                android:src="@drawable/ic_love"/>
 
             <TextView
                 android:layout_toRightOf="@id/iv_ic4"
