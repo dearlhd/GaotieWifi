@@ -7,6 +7,7 @@ import android.os.Environment;
 import android.util.Log;
 
 import com.dearlhd.crhwifi.SDK.bean.Journey;
+import com.dearlhd.crhwifi.SDK.bean.User;
 
 import java.io.File;
 
@@ -19,6 +20,7 @@ public class SQLiteHelper {
     private final String DB_NAME = "crhwifi.db";
 
     private final String[] JOURNEY_ATTRS = {"destination", "current_station", "arrival_time"};
+    private final String[] USER_ATTRS = {"username", "id"};
 
     private SQLiteDatabase mDatabase;
 
@@ -29,7 +31,92 @@ public class SQLiteHelper {
         }
     }
 
-    public void setJourney(Journey journey)  {
+    public void setUser(String username, long id) {
+        final boolean sdCardExist = Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED);
+
+        final String databaseFilename = PATH + DB_NAME;
+
+        mDatabase = SQLiteDatabase.openOrCreateDatabase(databaseFilename, null);
+
+        synchronized (SQLiteHelper.class) {
+            if (mDatabase != null) {
+                String dropQuery = "DROP TABLE IF EXISTS user";
+                mDatabase.execSQL(dropQuery);
+
+                String createQuery = "CREATE TABLE IF NOT EXISTS user ("
+                        + USER_ATTRS[0] + " text,"
+                        + USER_ATTRS[1] + " integer"
+                        + ");";
+                mDatabase.execSQL(createQuery);
+
+                String insertQuery = "INSERT INTO user ("
+                        + USER_ATTRS[0] + ","
+                        + USER_ATTRS[1]
+                        + ") VALUES(?, ?)";
+                mDatabase.execSQL(insertQuery, new Object[]{username, id});
+
+            }
+        }
+        if (mDatabase != null) {
+            mDatabase.close();
+        }
+    }
+
+    public long getUid () {
+        final String databaseFilename = PATH + DB_NAME;
+
+        mDatabase = SQLiteDatabase.openOrCreateDatabase(databaseFilename, null);
+
+        String createQuery = "CREATE TABLE IF NOT EXISTS user ("
+                + USER_ATTRS[0] + " text,"
+                + USER_ATTRS[1] + " integer"
+                + ");";
+        mDatabase.execSQL(createQuery);
+
+        String query = "SELECT * FROM user";
+        Cursor cursor = mDatabase.rawQuery(query, null);
+
+        long uid = 0;
+
+        while (cursor.moveToNext()) {
+            uid = cursor.getInt(cursor.getColumnIndex(USER_ATTRS[1]));
+        }
+
+        if (mDatabase != null) {
+            mDatabase.close();
+        }
+
+        return uid;
+    }
+
+    public String getUsername () {
+        final String databaseFilename = PATH + DB_NAME;
+
+        mDatabase = SQLiteDatabase.openOrCreateDatabase(databaseFilename, null);
+
+        String createQuery = "CREATE TABLE IF NOT EXISTS user ("
+                + USER_ATTRS[0] + " text,"
+                + USER_ATTRS[1] + " integer"
+                + ");";
+        mDatabase.execSQL(createQuery);
+
+        String query = "SELECT * FROM user";
+        Cursor cursor = mDatabase.rawQuery(query, null);
+
+        String username = null;
+
+        while (cursor.moveToNext()) {
+            username = cursor.getString(cursor.getColumnIndex(USER_ATTRS[0]));
+        }
+
+        if (mDatabase != null) {
+            mDatabase.close();
+        }
+
+        return username;
+    }
+
+    public void setJourney(Journey journey) {
         final boolean sdCardExist = Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED);
 
         final String databaseFilename = PATH + DB_NAME;

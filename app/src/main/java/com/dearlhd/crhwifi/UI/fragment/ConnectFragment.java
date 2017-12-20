@@ -1,6 +1,9 @@
 package com.dearlhd.crhwifi.UI.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,9 +16,7 @@ import com.dearlhd.crhwifi.R;
 import com.dearlhd.crhwifi.SDK.bean.Journey;
 import com.dearlhd.crhwifi.SDK.util.CityParser;
 import com.dearlhd.crhwifi.SDK.util.SQLiteHelper;
-import com.dearlhd.crhwifi.UI.activity.RemindActivity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import cn.qqtheme.framework.picker.OptionPicker;
@@ -26,6 +27,8 @@ import cn.qqtheme.framework.picker.OptionPicker;
 public class ConnectFragment extends Fragment {
 
     private View mRoot;
+
+    private TextView mTvWifi;
 
     private LinearLayout mLlSetDest;
     private TextView mTvDestination;
@@ -68,10 +71,14 @@ public class ConnectFragment extends Fragment {
     }
 
     private void initView () {
+        mTvWifi = (TextView) mRoot.findViewById(R.id.tv_wifi_name);
+
         mLlSetDest = (LinearLayout) mRoot.findViewById(R.id.ll_set_destination);
         mTvDestination = (TextView) mRoot.findViewById(R.id.tv_destination);
         mTvCurrentStation = (TextView) mRoot.findViewById(R.id.tv_current_station);
         mTvArrivalTime = (TextView) mRoot.findViewById(R.id.tv_arrival_time);
+
+        mTvWifi.setText(getWifiInfo().getSSID());
 
         mLlSetDest.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +99,7 @@ public class ConnectFragment extends Fragment {
                             mJourney.setDestination(item);
                             mJourney.setArrivalTime("18:38");
                             mTvDestination.setText(item);
+                            mTvCurrentStation.setText("上海");
                             mTvArrivalTime.setText("18:38");
                             SQLiteHelper helper = new SQLiteHelper();
                             helper.setJourney(mJourney);
@@ -101,5 +109,11 @@ public class ConnectFragment extends Fragment {
                 picker.show();
             }
         });
+    }
+
+    private WifiInfo getWifiInfo () {
+        WifiManager wifi_service = (WifiManager)getActivity().getSystemService(Context.WIFI_SERVICE);
+        WifiInfo wifiInfo = wifi_service.getConnectionInfo();
+        return wifiInfo;
     }
 }

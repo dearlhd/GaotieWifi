@@ -6,6 +6,12 @@ import com.google.gson.annotations.SerializedName;
  * Created by dearlhd on 2017/12/19.
  */
 public class User {
+    @SerializedName("id")
+    private long id;
+
+    @SerializedName("username")
+    private String username;
+
     @SerializedName("mail")
     private String mail;
 
@@ -20,6 +26,22 @@ public class User {
 
     @SerializedName("online_time")
     private String lastOnlineTime;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public String getMail() {
         return mail;

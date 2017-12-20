@@ -12,6 +12,7 @@ import com.dearlhd.crhwifi.R;
 import com.dearlhd.crhwifi.SDK.bean.Account;
 import com.dearlhd.crhwifi.SDK.network.CRHWifiApi;
 import com.dearlhd.crhwifi.SDK.response.LoginResponse;
+import com.dearlhd.crhwifi.SDK.util.SQLiteHelper;
 
 import rx.Subscriber;
 
@@ -41,7 +42,7 @@ public class LoginActivity extends Activity {
     }
 
     private void login() {
-        String username = mEtAccount.getText().toString();
+        final String username = mEtAccount.getText().toString();
         String password = mEtPassword.getText().toString();
         mSubscriber = new Subscriber<LoginResponse>() {
             @Override
@@ -56,26 +57,16 @@ public class LoginActivity extends Activity {
 
             @Override
             public void onNext(LoginResponse response) {
-//                if (auth.authorization == null) {
-//                    Toast.makeText(LoginActivity.this, "用户名或密码错误，请重新输入", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    // 将登录获得的认证信息存入本地文件
-//                    requestWritePermission();
-//                    SQLiteHelper helper = new SQLiteHelper();
-//                    try {
-//                        helper.setAuth(auth);
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                        Toast.makeText(LoginActivity.this, "您的手机存储无效，请联系应用提供者", Toast.LENGTH_SHORT).show();
-//                    }
-//
-//                    auth = helper.getAuth();
-//
-//
-                    Intent intent = new Intent(LoginActivity.this, HomePageActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-//                }
+                if (response.result != 1) {
+                    Toast.makeText(LoginActivity.this, "用户名或密码错误，请重新输入", Toast.LENGTH_SHORT).show();
+                } else {
+                    SQLiteHelper helper = new SQLiteHelper();
+                    helper.setUser(username, response.uid);
+                }
+
+                Intent intent = new Intent(LoginActivity.this, HomePageActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         };
 
