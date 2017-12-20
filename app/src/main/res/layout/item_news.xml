@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/iv_news_image"
         android:layout_width="80dp"
-        android:layout_height="match_parent"
+        android:layout_height="85dp"
         android:layout_marginLeft="12dp"
         android:src="@drawable/img_news"
         />
@@ -36,7 +36,7 @@
             android:id="@+id/tv_news_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="10dp"
             android:text="人民日报"
             android:textColor="@color/colorGreyText"
             android:textSize="13sp"

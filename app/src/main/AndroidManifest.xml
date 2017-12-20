@@ -32,7 +32,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".UI.activity.RemindActivity" />
+        <activity android:name=".UI.activity.NewsDetailActivity" />
     </application>
 
 </manifest>
