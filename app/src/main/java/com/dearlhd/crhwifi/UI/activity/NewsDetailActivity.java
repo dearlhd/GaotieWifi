@@ -14,6 +14,9 @@ import com.dearlhd.crhwifi.SDK.bean.History;
 import com.dearlhd.crhwifi.SDK.network.CRHWifiApi;
 import com.dearlhd.crhwifi.SDK.response.AddHistoryResponse;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import rx.Subscriber;
 
 /**
@@ -36,6 +39,7 @@ public class NewsDetailActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_detail);
         initView();
+        sendAccessRecord();
     }
 
     private void initView() {
@@ -84,6 +88,9 @@ public class NewsDetailActivity extends Activity {
         History history = new History();
         history.setUserId(5);
         history.setNewsId(getIntent().getLongExtra("news_id", 1));
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date = df.format(new Date());
+        history.setBrowseTime(date);
         CRHWifiApi.getInstance().addHistory(mHistorySubscriber, history);
     }
 
