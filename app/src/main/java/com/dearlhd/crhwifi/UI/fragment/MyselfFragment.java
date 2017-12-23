@@ -11,10 +11,12 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.dearlhd.crhwifi.R;
 import com.dearlhd.crhwifi.SDK.util.SQLiteHelper;
+import com.dearlhd.crhwifi.UI.activity.HistoryActivity;
 import com.dearlhd.crhwifi.UI.activity.LuckyDrawActivity;
 
 /**
@@ -26,6 +28,8 @@ public class MyselfFragment extends Fragment {
 
     private TextView mTvUsername;
     private LinearLayout mLlSignIn;
+
+    private RelativeLayout mRlHistories;
 
     private PopupWindow mSignInWindow;
 
@@ -59,6 +63,15 @@ public class MyselfFragment extends Fragment {
                 lp.alpha = 0.5f;
                 getActivity().getWindow().setAttributes(lp);
                 mSignInWindow.showAtLocation(getActivity().getWindow().getDecorView(), Gravity.CENTER, 0, 0);
+            }
+        });
+
+        mRlHistories = (RelativeLayout) mRoot.findViewById(R.id.rl_histories);
+        mRlHistories.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), HistoryActivity.class);
+                startActivity(intent);
             }
         });
     }

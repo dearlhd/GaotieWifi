@@ -9,6 +9,6 @@ import java.util.List;
  * Created by dearlhd on 2017/12/19.
  */
 public class HistoryResponse {
-    @SerializedName("data")
+    @SerializedName("histories")
     public List<History> histories;
 }

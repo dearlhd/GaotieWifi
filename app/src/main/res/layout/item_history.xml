@@ -1,29 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
-    android:orientation="horizontal"
-    android:gravity="center_vertical"
-    android:background="@color/colorWhite">
+    android:layout_height="80dp">
 
-    <TextView
-        android:id="@+id/tv_history_title"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
-        android:text="昨日新闻"
-        android:textColor="@color/colorBlackText"
-        android:textSize="16sp"
-        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/colorWhite"
+        android:gravity="center_vertical">
 
-    <TextView
-        android:id="@+id/tv_history_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:text="2017-12-23 15:15:00"
-        android:singleLine="true"
-        android:textColor="@color/colorGreyText"
-        android:textSize="12sp"
-        />
+        <TextView
+            android:id="@+id/tv_history_title"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:text="昨日新闻"
+            android:textColor="@color/colorBlackText"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_history_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:singleLine="true"
+            android:text="2017-12-23 15:15:00"
+            android:textColor="@color/colorGreyText"
+            android:textSize="12sp" />
+
+    </RelativeLayout>
+
 
 </RelativeLayout>

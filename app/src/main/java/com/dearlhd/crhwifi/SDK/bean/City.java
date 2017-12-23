@@ -9,6 +9,10 @@ public class City {
     @SerializedName("city_name")
     private String city;
 
+    public City (String city) {
+        this.city = city;
+    }
+
     public String getCity() {
         return city;
     }

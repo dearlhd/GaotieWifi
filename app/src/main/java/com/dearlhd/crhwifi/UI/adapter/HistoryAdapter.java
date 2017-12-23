@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.dearlhd.crhwifi.R;
 import com.dearlhd.crhwifi.SDK.bean.History;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,6 +24,9 @@ public class HistoryAdapter extends BaseAdapter {
 
     public HistoryAdapter (Context context, List<History> histories) {
         mContext = context;
+        if (histories == null) {
+            histories = new ArrayList<>();
+        }
         mHistories = histories;
     }
 
@@ -56,7 +60,7 @@ public class HistoryAdapter extends BaseAdapter {
         }
 
         History history = mHistories.get(i);
-        holder.tvTime.setText(history.getTitle());
+        holder.tvTitle.setText(history.getTitle());
         holder.tvTime.setText(history.getBrowseTime());
 
         return view;

@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by dearlhd on 2017/12/19.
  */
 public class History {
-    @SerializedName("uid")
+    @SerializedName("user_id")
     private long userId;
 
     @SerializedName("news_id")

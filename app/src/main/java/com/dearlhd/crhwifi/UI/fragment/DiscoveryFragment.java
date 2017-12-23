@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 
 import com.dearlhd.crhwifi.R;
 import com.dearlhd.crhwifi.UI.activity.RecommendActivity;
+import com.dearlhd.crhwifi.UI.activity.WeatherActivity;
 
 /**
  * Created by dearlhd on 2017/12/13.
@@ -18,6 +19,7 @@ public class DiscoveryFragment extends Fragment {
 
     private View mRoot;
 
+    private LinearLayout mLlWeather;
     private LinearLayout mLlFood;
     private LinearLayout mLlHotel;
 
@@ -38,8 +40,17 @@ public class DiscoveryFragment extends Fragment {
     }
 
     private void initView () {
+        mLlWeather = (LinearLayout) mRoot.findViewById(R.id.ll_weather);
         mLlFood = (LinearLayout) mRoot.findViewById(R.id.ll_food_recommend);
         mLlHotel = (LinearLayout) mRoot.findViewById(R.id.ll_hotel_recommend);
+
+        mLlWeather.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), WeatherActivity.class);
+                startActivity(intent);
+            }
+        });
 
         mLlFood.setOnClickListener(new View.OnClickListener() {
             @Override

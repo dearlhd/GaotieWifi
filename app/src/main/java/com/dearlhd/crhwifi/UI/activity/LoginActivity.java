@@ -29,6 +29,18 @@ public class LoginActivity extends Activity {
         initView();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        SQLiteHelper helper = new SQLiteHelper();
+        if (helper.getUid() != 0) {
+            Intent intent = new Intent(LoginActivity.this, HomePageActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
+    }
+
     private void initView() {
         mEtAccount = (EditText) findViewById(R.id.et_account);
         mEtPassword = (EditText) findViewById(R.id.et_password);
