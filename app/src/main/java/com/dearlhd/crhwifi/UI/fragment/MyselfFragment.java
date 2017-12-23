@@ -1,5 +1,6 @@
 package com.dearlhd.crhwifi.UI.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.Gravity;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 import com.dearlhd.crhwifi.R;
 import com.dearlhd.crhwifi.SDK.util.SQLiteHelper;
+import com.dearlhd.crhwifi.UI.activity.LuckyDrawActivity;
 
 /**
  * Created by dearlhd on 2017/12/13.
@@ -84,6 +86,16 @@ public class MyselfFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 mSignInWindow.dismiss();
+            }
+        });
+
+        TextView tvLuckyPan = (TextView)signInView.findViewById(R.id.tv_to_lucky_pan);
+        tvLuckyPan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mSignInWindow.dismiss();
+                Intent intent = new Intent(getActivity(), LuckyDrawActivity.class);
+                startActivity(intent);
             }
         });
     }

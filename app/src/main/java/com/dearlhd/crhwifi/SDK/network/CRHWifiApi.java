@@ -1,12 +1,14 @@
 package com.dearlhd.crhwifi.SDK.network;
 
 import com.dearlhd.crhwifi.SDK.bean.Account;
+import com.dearlhd.crhwifi.SDK.bean.City;
 import com.dearlhd.crhwifi.SDK.bean.History;
 import com.dearlhd.crhwifi.SDK.response.AddHistoryResponse;
 import com.dearlhd.crhwifi.SDK.response.HistoryResponse;
 import com.dearlhd.crhwifi.SDK.response.NewsResponse;
 import com.dearlhd.crhwifi.SDK.response.LoginResponse;
 import com.dearlhd.crhwifi.SDK.response.UserResponse;
+import com.dearlhd.crhwifi.SDK.response.WeatherResponse;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -116,6 +118,17 @@ public class CRHWifiApi {
      */
     public void getHistories (Subscriber<HistoryResponse> subscriber, long userId) {
         mService.getHistories(userId)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    /**
+     * 获取天气信息
+     */
+    public void getWeather (Subscriber<WeatherResponse> subscriber, City city) {
+        mService.getWeather(city)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

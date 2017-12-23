@@ -63,11 +63,12 @@
         android:gravity="center">
 
         <TextView
+            android:id="@+id/tv_to_lucky_pan"
             android:layout_width="160dp"
             android:layout_height="32dp"
             android:background="@drawable/shape_round_corner_button"
             android:gravity="center"
-            android:text="兑换礼物"
+            android:text="积分抽奖"
             android:textColor="@color/colorWhite"
             android:textSize="15sp"
             />

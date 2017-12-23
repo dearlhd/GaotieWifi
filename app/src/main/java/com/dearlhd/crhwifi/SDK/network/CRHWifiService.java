@@ -1,12 +1,14 @@
 package com.dearlhd.crhwifi.SDK.network;
 
 import com.dearlhd.crhwifi.SDK.bean.Account;
+import com.dearlhd.crhwifi.SDK.bean.City;
 import com.dearlhd.crhwifi.SDK.bean.History;
 import com.dearlhd.crhwifi.SDK.response.AddHistoryResponse;
 import com.dearlhd.crhwifi.SDK.response.HistoryResponse;
 import com.dearlhd.crhwifi.SDK.response.NewsResponse;
 import com.dearlhd.crhwifi.SDK.response.LoginResponse;
 import com.dearlhd.crhwifi.SDK.response.UserResponse;
+import com.dearlhd.crhwifi.SDK.response.WeatherResponse;
 
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -52,4 +54,11 @@ public interface CRHWifiService {
      */
     @GET("histories/{uid}")
     Observable<HistoryResponse> getHistories(@Path("uid") long userId);
+
+    /**
+     * 获取天气信息
+     */
+    @Headers({"Content-type:application/json"})
+    @POST("weather")
+    Observable<WeatherResponse> getWeather (@Body City city);
 }

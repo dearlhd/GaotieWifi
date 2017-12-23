@@ -12,6 +12,9 @@ public class History {
     @SerializedName("news_id")
     private long newsId;
 
+    @SerializedName("title")
+    private String title;
+
     @SerializedName("browse_time")
     private String browseTime;
 
@@ -29,6 +32,14 @@ public class History {
 
     public void setNewsId(long newsId) {
         this.newsId = newsId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getBrowseTime() {

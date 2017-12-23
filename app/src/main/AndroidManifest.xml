@@ -34,6 +34,10 @@
         </activity>
 
         <activity android:name=".UI.activity.NewsDetailActivity" />
+        <activity android:name=".UI.activity.RecommendActivity" />
+        <activity android:name=".UI.activity.LuckyDrawActivity" />
+        <activity android:name=".UI.activity.HistoryActivity" />
+        <activity android:name=".UI.activity.WeatherActivity" />
     </application>
 
 </manifest>
