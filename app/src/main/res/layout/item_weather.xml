@@ -6,8 +6,9 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:gravity="center_vertical">
+        android:layout_height="68dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/shape_round_corner_translucence">
         <TextView
             android:id="@+id/tv_weather_date"
             android:layout_width="wrap_content"

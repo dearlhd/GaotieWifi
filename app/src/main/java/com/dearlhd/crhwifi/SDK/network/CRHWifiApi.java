@@ -3,10 +3,12 @@ package com.dearlhd.crhwifi.SDK.network;
 import com.dearlhd.crhwifi.SDK.bean.Account;
 import com.dearlhd.crhwifi.SDK.bean.City;
 import com.dearlhd.crhwifi.SDK.bean.History;
+import com.dearlhd.crhwifi.SDK.bean.RecommendBean;
 import com.dearlhd.crhwifi.SDK.response.AddHistoryResponse;
 import com.dearlhd.crhwifi.SDK.response.HistoryResponse;
 import com.dearlhd.crhwifi.SDK.response.NewsResponse;
 import com.dearlhd.crhwifi.SDK.response.LoginResponse;
+import com.dearlhd.crhwifi.SDK.response.RecommendResponse;
 import com.dearlhd.crhwifi.SDK.response.UserResponse;
 import com.dearlhd.crhwifi.SDK.response.WeatherResponse;
 
@@ -129,6 +131,17 @@ public class CRHWifiApi {
      */
     public void getWeather (Subscriber<WeatherResponse> subscriber, City city) {
         mService.getWeather(city)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    /**
+     * 获取推荐信息（酒店、餐饮）
+     */
+    public void getRecommendData (Subscriber<RecommendResponse> subscriber, RecommendBean bean) {
+        mService.getRecommendData(bean)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

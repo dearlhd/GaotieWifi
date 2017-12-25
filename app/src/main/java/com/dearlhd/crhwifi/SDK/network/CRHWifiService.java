@@ -3,10 +3,12 @@ package com.dearlhd.crhwifi.SDK.network;
 import com.dearlhd.crhwifi.SDK.bean.Account;
 import com.dearlhd.crhwifi.SDK.bean.City;
 import com.dearlhd.crhwifi.SDK.bean.History;
+import com.dearlhd.crhwifi.SDK.bean.RecommendBean;
 import com.dearlhd.crhwifi.SDK.response.AddHistoryResponse;
 import com.dearlhd.crhwifi.SDK.response.HistoryResponse;
 import com.dearlhd.crhwifi.SDK.response.NewsResponse;
 import com.dearlhd.crhwifi.SDK.response.LoginResponse;
+import com.dearlhd.crhwifi.SDK.response.RecommendResponse;
 import com.dearlhd.crhwifi.SDK.response.UserResponse;
 import com.dearlhd.crhwifi.SDK.response.WeatherResponse;
 
@@ -61,4 +63,11 @@ public interface CRHWifiService {
     @Headers({"Content-type:application/json"})
     @POST("weather")
     Observable<WeatherResponse> getWeather (@Body City city);
+
+    /**
+     * 获取推荐列表
+     */
+    @Headers({"Content-type:application/json"})
+    @POST("recommend")
+    Observable<RecommendResponse> getRecommendData (@Body RecommendBean recommendBean);
 }

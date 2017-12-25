@@ -49,6 +49,18 @@ public class NewsFragment extends Fragment {
     private void initView () {
         mNewsListView = (PullToRefreshListView) mRoot.findViewById(R.id.lv_news);
 
+        mNewsListView.setOnRefreshListener(new PullToRefreshListView.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                requestNews();
+            }
+
+            @Override
+            public void onLoadMore() {
+                mNewsListView.onLoadMoreComplete(false);
+            }
+        });
+
         mNewsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -64,6 +76,10 @@ public class NewsFragment extends Fragment {
             }
         });
 
+        mNewsListView.onRefresh();
+    }
+
+    private void requestNews () {
         mSubscriber = new Subscriber<NewsResponse>() {
             @Override
             public void onCompleted() {
@@ -80,6 +96,7 @@ public class NewsFragment extends Fragment {
                 List<News> newsList = newsResponse.newses;
                 NewsAdapter adapter = new NewsAdapter(getContext(), newsList);
                 mNewsListView.setAdapter(adapter);
+                mNewsListView.onRefreshComplete();
             }
         };
 

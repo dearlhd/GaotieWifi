@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+            <ImageView
+                android:id="@+id/iv_recommend_thumbnail"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/img_news" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/iv_recommend_thumbnail"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_recommend_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="小杨生煎(我格广场)"
+                    android:textColor="@color/colorBlackText"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/iv_star1"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:src="@drawable/ic_start_empty" />
+
+                    <ImageView
+                        android:id="@+id/iv_star2"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginLeft="1dp"
+                        android:src="@drawable/ic_start_empty" />
+
+                    <ImageView
+                        android:id="@+id/iv_star3"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginLeft="1dp"
+                        android:src="@drawable/ic_start_empty" />
+
+                    <ImageView
+                        android:id="@+id/iv_star4"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginLeft="1dp"
+                        android:src="@drawable/ic_start_empty" />
+
+                    <ImageView
+                        android:id="@+id/iv_star5"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginLeft="1dp"
+                        android:src="@drawable/ic_start_empty" />
+
+                    <TextView
+                        android:id="@+id/tv_cost_avg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="¥30/人"
+                        android:textColor="@color/colorBlackText"
+                        android:textSize="13sp" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/tv_recommend_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="长宁区"
+                    android:textColor="@color/colorGreyText"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tv_recommend_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="安化路与江苏路交叉口东北50米"
+                    android:textColor="@color/colorGreyText"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

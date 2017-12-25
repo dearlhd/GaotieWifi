@@ -29,6 +29,9 @@ public class SQLiteHelper {
         if (!dir.exists()) {//不存在创建
             dir.mkdir();
         }
+
+        final String databaseFilename = PATH + DB_NAME;
+        mDatabase = SQLiteDatabase.openOrCreateDatabase(databaseFilename, null);
     }
 
     public void setUser(String username, long id) {

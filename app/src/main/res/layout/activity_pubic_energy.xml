@@ -19,36 +19,23 @@
             android:src="@drawable/ic_back" />
 
         <TextView
-            android:id="@+id/tv_recommend_page_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="酒店推荐"
-            android:textColor="@color/colorBlackText"
+            android:text="公益能量"
             android:textSize="18sp"
-            />
+            android:textColor="@color/colorBlackText"/>
 
     </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorDarkGreyLine" />
-
-    <com.dearlhd.crhwifi.UI.view.PullToRefreshListView
-        android:id="@+id/lv_recommend"
+    <ListView
+        android:id="@+id/lv_public_energy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
         android:divider="@color/colorLightGreyLine"
-        android:dividerHeight="3dp"
-        android:background="@color/colorWhite" />
+        android:dividerHeight="1dp">
 
-    <WebView
-        android:id="@+id/wv_recommend"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone">
-
-    </WebView>
+    </ListView>
 
 </LinearLayout>

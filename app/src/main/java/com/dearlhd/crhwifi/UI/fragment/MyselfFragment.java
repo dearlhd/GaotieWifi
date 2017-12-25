@@ -18,6 +18,7 @@ import com.dearlhd.crhwifi.R;
 import com.dearlhd.crhwifi.SDK.util.SQLiteHelper;
 import com.dearlhd.crhwifi.UI.activity.HistoryActivity;
 import com.dearlhd.crhwifi.UI.activity.LuckyDrawActivity;
+import com.dearlhd.crhwifi.UI.activity.PublicEnergyActivity;
 
 /**
  * Created by dearlhd on 2017/12/13.
@@ -29,9 +30,13 @@ public class MyselfFragment extends Fragment {
     private TextView mTvUsername;
     private LinearLayout mLlSignIn;
 
+    private RelativeLayout mRlTask;
+    private RelativeLayout mRlLuckyPan;
     private RelativeLayout mRlHistories;
+    private RelativeLayout mRlPublicEnergy;
 
     private PopupWindow mSignInWindow;
+    private PopupWindow mTaskWindow;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,11 +71,41 @@ public class MyselfFragment extends Fragment {
             }
         });
 
+        mRlTask = (RelativeLayout) mRoot.findViewById(R.id.rl_task);
+        initTaskWindow();
+        mRlTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                WindowManager.LayoutParams lp = getActivity().getWindow().getAttributes();
+                lp.alpha = 0.5f;
+                getActivity().getWindow().setAttributes(lp);
+                mTaskWindow.showAtLocation(getActivity().getWindow().getDecorView(), Gravity.CENTER, 0, 0);
+            }
+        });
+
+        mRlLuckyPan = (RelativeLayout) mRoot.findViewById(R.id.rl_lucky_pan);
+        mRlLuckyPan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), LuckyDrawActivity.class);
+                startActivity(intent);
+            }
+        });
+
         mRlHistories = (RelativeLayout) mRoot.findViewById(R.id.rl_histories);
         mRlHistories.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), HistoryActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mRlPublicEnergy = (RelativeLayout) mRoot.findViewById(R.id.rl_public_energy);
+        mRlPublicEnergy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), PublicEnergyActivity.class);
                 startActivity(intent);
             }
         });
@@ -111,5 +146,41 @@ public class MyselfFragment extends Fragment {
                 startActivity(intent);
             }
         });
+    }
+
+    private void initTaskWindow () {
+        View taskView = LayoutInflater.from(getContext()).inflate(R.layout.popupwindow_task, null);
+        mTaskWindow = new PopupWindow(getContext());
+        mTaskWindow.setContentView(taskView);
+        mTaskWindow.setWidth(800);
+        mTaskWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+        mTaskWindow.setOutsideTouchable(true);
+        mTaskWindow.setFocusable(true);
+        mTaskWindow.setBackgroundDrawable(getResources().getDrawable(R.drawable.shape_round_corner));
+        mTaskWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                WindowManager.LayoutParams lp = getActivity().getWindow().getAttributes();
+                lp.alpha = 1f;
+                getActivity().getWindow().setAttributes(lp);
+            }
+        });
+
+        ImageView ivClose = (ImageView) taskView.findViewById(R.id.iv_close);
+        TextView tvToFinish = (TextView) taskView.findViewById(R.id.tv_to_finish);
+        ivClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mTaskWindow.dismiss();
+            }
+        });
+        tvToFinish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mTaskWindow.dismiss();
+            }
+        });
+
+
     }
 }

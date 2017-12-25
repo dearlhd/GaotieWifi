@@ -38,6 +38,7 @@
         <activity android:name=".UI.activity.LuckyDrawActivity" />
         <activity android:name=".UI.activity.HistoryActivity" />
         <activity android:name=".UI.activity.WeatherActivity" />
+        <activity android:name=".UI.activity.PublicEnergyActivity" />
     </application>
 
 </manifest>
