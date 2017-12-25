@@ -160,6 +160,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/ll_weather"
             android:layout_width="0dp"
             android:layout_height="65dp"
             android:layout_weight="1"
@@ -183,6 +184,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_hotel_recommend"
             android:layout_width="0dp"
             android:layout_height="65dp"
             android:layout_weight="1"
@@ -206,6 +208,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_food_recommend"
             android:layout_width="0dp"
             android:layout_height="65dp"
             android:layout_weight="1"
@@ -229,6 +232,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_task"
             android:layout_width="0dp"
             android:layout_height="65dp"
             android:layout_weight="1"
@@ -253,21 +257,17 @@
 
     </LinearLayout>
 
-    <LinearLayout
+
+
+    <ImageView
+        android:id="@+id/iv_ad"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:gravity="center"
-        android:background="@color/colorWhite">
+        android:src="@drawable/img_ad1">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="广告"
-            android:textSize="18sp"/>
-
-    </LinearLayout>
+    </ImageView>
 
 </LinearLayout>

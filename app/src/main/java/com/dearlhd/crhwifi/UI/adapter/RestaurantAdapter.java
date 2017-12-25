@@ -68,7 +68,9 @@ public class RestaurantAdapter extends BaseAdapter {
         }
 
         Restaurant restaurant = mRestaurant.get(i);
-        BitmapManager.INSTANCE.loadBitmap(restaurant.getPhotos().get(0).url, holder.ivThumbnail, 300, 300);
+        if (restaurant.getPhotos() != null && restaurant.getPhotos().size() >= 1) {
+            BitmapManager.INSTANCE.loadBitmap(restaurant.getPhotos().get(0).url, holder.ivThumbnail, 300, 300);
+        }
         holder.tvName.setText(restaurant.getName());
         int rating = (int) restaurant.getInfo().rating;
         switch (rating) {

@@ -19,6 +19,11 @@ import com.dearlhd.crhwifi.UI.fragment.DiscoveryFragment;
 import com.dearlhd.crhwifi.UI.fragment.MyselfFragment;
 import com.dearlhd.crhwifi.UI.fragment.NewsFragment;
 
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.util.Enumeration;
+
 /**
  * Created by dearlhd on 2016/12/16.
  */
@@ -185,11 +190,33 @@ public class HomePageActivity extends FragmentActivity {
         }
     }
 
-    private void initTab () {
+    private void initTab() {
         mTvTab0.setTextColor(getResources().getColor(R.color.colorBlackText));
         mTvTab1.setTextColor(getResources().getColor(R.color.colorBlackText));
         mTvTab2.setTextColor(getResources().getColor(R.color.colorBlackText));
         mTvTab3.setTextColor(getResources().getColor(R.color.colorBlackText));
+    }
+
+    // 获取本地IP函数
+    public static String getLocalIPAddress() {
+        try {
+            for (Enumeration<NetworkInterface> mEnumeration = NetworkInterface
+                    .getNetworkInterfaces(); mEnumeration.hasMoreElements(); ) {
+                NetworkInterface intf = mEnumeration.nextElement();
+                for (Enumeration<InetAddress> enumIPAddr = intf
+                        .getInetAddresses(); enumIPAddr.hasMoreElements(); ) {
+                    InetAddress inetAddress = enumIPAddr.nextElement();
+                    // 如果不是回环地址
+                    if (!inetAddress.isLoopbackAddress()) {
+                        // 直接返回本地IP地址
+                        return inetAddress.getHostAddress().toString();
+                    }
+                }
+            }
+        } catch (SocketException ex) {
+            System.err.print("error");
+        }
+        return null;
     }
 
 }

@@ -68,7 +68,9 @@ public class HotelAdapter extends BaseAdapter {
         }
 
         Hotel hotel = mHotels.get(i);
-        BitmapManager.INSTANCE.loadBitmap(hotel.getPhotos().get(0).url, holder.ivThumbnail, 300, 300);
+        if (hotel.getPhotos() != null && hotel.getPhotos().size() >= 1) {
+            BitmapManager.INSTANCE.loadBitmap(hotel.getPhotos().get(0).url, holder.ivThumbnail, 300, 300);
+        }
         holder.tvName.setText(hotel.getName());
         int rating = (int) hotel.getInfo().rating;
         switch (rating) {
