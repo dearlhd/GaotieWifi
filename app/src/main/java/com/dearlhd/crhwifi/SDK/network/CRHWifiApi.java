@@ -8,9 +8,11 @@ import com.dearlhd.crhwifi.SDK.response.AddHistoryResponse;
 import com.dearlhd.crhwifi.SDK.response.HistoryResponse;
 import com.dearlhd.crhwifi.SDK.response.NewsResponse;
 import com.dearlhd.crhwifi.SDK.response.LoginResponse;
+import com.dearlhd.crhwifi.SDK.response.NoBodyEntity;
 import com.dearlhd.crhwifi.SDK.response.RecommendResponse;
 import com.dearlhd.crhwifi.SDK.response.UserResponse;
 import com.dearlhd.crhwifi.SDK.response.WeatherResponse;
+import com.google.gson.JsonObject;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -142,6 +144,20 @@ public class CRHWifiApi {
      */
     public void getRecommendData (Subscriber<RecommendResponse> subscriber, RecommendBean bean) {
         mService.getRecommendData(bean)
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
+
+    /**
+     * 添加收藏
+     */
+    public void sendFavorite (Subscriber<NoBodyEntity> subscriber, long uid, long newsId) {
+        JsonObject object = new JsonObject();
+        object.addProperty("user_id", uid);
+        object.addProperty("poi_id", newsId);
+        mService.sendFavorite(object)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

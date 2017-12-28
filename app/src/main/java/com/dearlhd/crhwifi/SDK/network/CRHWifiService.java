@@ -8,9 +8,11 @@ import com.dearlhd.crhwifi.SDK.response.AddHistoryResponse;
 import com.dearlhd.crhwifi.SDK.response.HistoryResponse;
 import com.dearlhd.crhwifi.SDK.response.NewsResponse;
 import com.dearlhd.crhwifi.SDK.response.LoginResponse;
+import com.dearlhd.crhwifi.SDK.response.NoBodyEntity;
 import com.dearlhd.crhwifi.SDK.response.RecommendResponse;
 import com.dearlhd.crhwifi.SDK.response.UserResponse;
 import com.dearlhd.crhwifi.SDK.response.WeatherResponse;
+import com.google.gson.JsonObject;
 
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -70,4 +72,11 @@ public interface CRHWifiService {
     @Headers({"Content-type:application/json"})
     @POST("recommend")
     Observable<RecommendResponse> getRecommendData (@Body RecommendBean recommendBean);
+
+    /**
+     * 添加收藏
+     */
+    @Headers({"Content-type:application/json"})
+    @POST("favorite")
+    Observable<NoBodyEntity> sendFavorite (@Body JsonObject obj);
 }

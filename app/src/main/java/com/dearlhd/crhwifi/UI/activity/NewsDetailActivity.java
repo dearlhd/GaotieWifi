@@ -13,6 +13,8 @@ import com.dearlhd.crhwifi.R;
 import com.dearlhd.crhwifi.SDK.bean.History;
 import com.dearlhd.crhwifi.SDK.network.CRHWifiApi;
 import com.dearlhd.crhwifi.SDK.response.AddHistoryResponse;
+import com.dearlhd.crhwifi.SDK.response.NoBodyEntity;
+import com.dearlhd.crhwifi.SDK.util.SQLiteHelper;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,6 +27,7 @@ import rx.Subscriber;
 public class NewsDetailActivity extends Activity {
 
     private ImageView mIvBack;
+    private ImageView mIvFavorite;
 
     private TextView mTvTitle;
     private TextView mTvTime;
@@ -32,6 +35,7 @@ public class NewsDetailActivity extends Activity {
     private TextView mTvContent;
     private ImageView mIvNewsImage;
 
+    private Subscriber<NoBodyEntity> mFavoriteSubscriber;
     private Subscriber<AddHistoryResponse> mHistorySubscriber;
 
     @Override
@@ -44,6 +48,7 @@ public class NewsDetailActivity extends Activity {
 
     private void initView() {
         mIvBack = (ImageView) findViewById(R.id.iv_back);
+        mIvFavorite = (ImageView) findViewById(R.id.iv_favorite);
         mTvTitle = (TextView) findViewById(R.id.tv_news_title);
         mTvTime = (TextView) findViewById(R.id.tv_news_time);
         mTvSource = (TextView) findViewById(R.id.tv_news_source);
@@ -57,6 +62,13 @@ public class NewsDetailActivity extends Activity {
             }
         });
 
+        mIvFavorite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendFavorite();
+            }
+        });
+
         Intent intent = getIntent();
         mTvTitle.setText(intent.getStringExtra("title"));
         mTvTime.setText(intent.getStringExtra("time"));
@@ -65,6 +77,28 @@ public class NewsDetailActivity extends Activity {
 
         byte[] bitmapArray = decodeBase64(intent.getStringExtra("image"));
         mIvNewsImage.setImageBitmap(BitmapFactory.decodeByteArray(bitmapArray, 0, bitmapArray.length));
+    }
+
+    private void sendFavorite () {
+        mFavoriteSubscriber = new Subscriber<NoBodyEntity>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onNext(NoBodyEntity noBodyEntity) {
+                mIvFavorite.setImageResource(R.drawable.ic_star_full);
+            }
+        };
+
+        SQLiteHelper helper = new SQLiteHelper();
+        CRHWifiApi.getInstance().sendFavorite(mFavoriteSubscriber, helper.getUid(), getIntent().getLongExtra("news_id", 0));
     }
 
     private void sendAccessRecord () {
