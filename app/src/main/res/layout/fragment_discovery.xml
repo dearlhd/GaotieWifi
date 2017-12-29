@@ -53,118 +53,299 @@
 
     </RelativeLayout>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:background="@color/colorWhite"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/ll_weather"
-                android:layout_width="0dp"
-                android:layout_height="65dp"
-                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@color/colorWhite"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/ll_weather"
+                        android:layout_width="0dp"
+                        android:layout_height="65dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        >
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ic_weather"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="到站天气"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorBlackText"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_hotel_recommend"
+                        android:layout_width="0dp"
+                        android:layout_height="65dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        >
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ic_hotel"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="酒店推荐"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorBlackText"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_food_recommend"
+                        android:layout_width="0dp"
+                        android:layout_height="65dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        >
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ic_food"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="美食推荐"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorBlackText"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_task"
+                        android:layout_width="0dp"
+                        android:layout_height="65dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        >
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ic_red_paper"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="做任务"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="15sp"
+                            android:textColor="@color/colorBlackText"
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_discover1"
+                android:layout_width="match_parent"
+                android:layout_height="178dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
                 android:orientation="vertical"
-                android:gravity="center"
-                >
+                android:background="@color/colorWhite">
+
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_weather"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginRight="18dp"
+                    android:src="@drawable/img_discover1"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="到站天气"
-                    android:layout_gravity="center_horizontal"
-                    android:textSize="15sp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="25dp"
+                    android:singleLine="true"
+                    android:text="出了名霸道的店来了，并不打算重新做人"
                     android:textColor="@color/colorBlackText"
+                    android:textSize="16sp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="25dp"
+                    android:text="魔都吃货小分队"
+                    android:textColor="@color/colorGreyText"
+                    android:textSize="13sp"
                     />
 
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_hotel_recommend"
-                android:layout_width="0dp"
-                android:layout_height="65dp"
-                android:layout_weight="1"
+                android:id="@+id/ll_discover2"
+                android:layout_width="match_parent"
+                android:layout_height="178dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
                 android:orientation="vertical"
-                android:gravity="center"
-                >
+                android:background="@color/colorWhite">
+
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_hotel"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginRight="18dp"
+                    android:src="@drawable/img_discover2"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="酒店推荐"
-                    android:layout_gravity="center_horizontal"
-                    android:textSize="15sp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="25dp"
+                    android:singleLine="true"
+                    android:text="南北豆花甜咸之争，在这里终结了"
                     android:textColor="@color/colorBlackText"
+                    android:textSize="16sp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="25dp"
+                    android:text="魔都吃货小分队"
+                    android:textColor="@color/colorGreyText"
+                    android:textSize="13sp"
                     />
 
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_food_recommend"
-                android:layout_width="0dp"
-                android:layout_height="65dp"
-                android:layout_weight="1"
+                android:id="@+id/ll_discover3"
+                android:layout_width="match_parent"
+                android:layout_height="178dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
                 android:orientation="vertical"
-                android:gravity="center"
-                >
+                android:background="@color/colorWhite">
+
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_food"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginRight="18dp"
+                    android:src="@drawable/img_discover3"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="美食推荐"
-                    android:layout_gravity="center_horizontal"
-                    android:textSize="15sp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="25dp"
+                    android:singleLine="true"
+                    android:text="每顿狂省72元！这份“火锅攻略”教你如何吃越多越便宜！"
                     android:textColor="@color/colorBlackText"
+                    android:textSize="16sp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="25dp"
+                    android:text="魔都吃货小分队"
+                    android:textColor="@color/colorGreyText"
+                    android:textSize="13sp"
                     />
 
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_task"
-                android:layout_width="0dp"
-                android:layout_height="65dp"
-                android:layout_weight="1"
+                android:id="@+id/ll_discover4"
+                android:layout_width="match_parent"
+                android:layout_height="178dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
                 android:orientation="vertical"
-                android:gravity="center"
-                >
+                android:background="@color/colorWhite">
+
                 <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_red_paper"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="110dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginRight="18dp"
+                    android:src="@drawable/img_discover4"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="做任务"
-                    android:layout_gravity="center_horizontal"
-                    android:textSize="15sp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="25dp"
+                    android:singleLine="true"
+                    android:text="我在一家性冷淡的串串店里，撸了355根串！"
                     android:textColor="@color/colorBlackText"
+                    android:textSize="16sp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="25dp"
+                    android:text="魔都吃货小分队"
+                    android:textColor="@color/colorGreyText"
+                    android:textSize="13sp"
                     />
 
             </LinearLayout>
-
         </LinearLayout>
-        
-    </LinearLayout>
 
+    </ScrollView>
+
+    
 </LinearLayout>
