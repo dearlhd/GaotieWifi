@@ -163,4 +163,15 @@ public class CRHWifiApi {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
+
+    /**
+     * 认证上网
+     */
+    public void verify (Subscriber<NoBodyEntity> subscriber) {
+        mService.verify()
+                .subscribeOn(Schedulers.io())
+                .unsubscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(subscriber);
+    }
 }

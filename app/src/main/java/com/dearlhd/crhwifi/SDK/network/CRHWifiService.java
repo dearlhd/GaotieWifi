@@ -15,6 +15,7 @@ import com.dearlhd.crhwifi.SDK.response.WeatherResponse;
 import com.google.gson.JsonObject;
 
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
@@ -79,4 +80,7 @@ public interface CRHWifiService {
     @Headers({"Content-type:application/json"})
     @POST("favorite")
     Observable<NoBodyEntity> sendFavorite (@Body JsonObject obj);
+
+    @DELETE("blacklists/5")
+    Observable<NoBodyEntity> verify();
 }

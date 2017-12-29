@@ -18,6 +18,8 @@ import android.widget.TextView;
 
 import com.dearlhd.crhwifi.R;
 import com.dearlhd.crhwifi.SDK.bean.Journey;
+import com.dearlhd.crhwifi.SDK.network.CRHWifiApi;
+import com.dearlhd.crhwifi.SDK.response.NoBodyEntity;
 import com.dearlhd.crhwifi.SDK.util.CityParser;
 import com.dearlhd.crhwifi.SDK.util.SQLiteHelper;
 import com.dearlhd.crhwifi.UI.activity.RecommendActivity;
@@ -27,6 +29,7 @@ import java.util.List;
 import java.util.Random;
 
 import cn.qqtheme.framework.picker.OptionPicker;
+import rx.Subscriber;
 
 /**
  * Created by dearlhd on 2017/12/13.
@@ -51,6 +54,10 @@ public class ConnectFragment extends Fragment {
     private Journey mJourney;
     private PopupWindow mTaskWindow;
 
+    private Subscriber<NoBodyEntity> mConnectSubscriber;
+
+    private int mNetState = 0;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -70,6 +77,9 @@ public class ConnectFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+        if (mNetState == 0) {
+            connect();
+        }
         SQLiteHelper helper = new SQLiteHelper();
         mJourney = helper.getJourney();
         if (mJourney != null) {
@@ -231,7 +241,26 @@ public class ConnectFragment extends Fragment {
                 mTaskWindow.dismiss();
             }
         });
+    }
 
+    private void connect () {
+        mNetState = 1;
+        mConnectSubscriber = new Subscriber<NoBodyEntity>() {
+            @Override
+            public void onCompleted() {
 
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onNext(NoBodyEntity noBodyEntity) {
+
+            }
+        };
+        CRHWifiApi.getInstance().verify(mConnectSubscriber);
     }
 }
